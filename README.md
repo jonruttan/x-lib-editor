@@ -17,6 +17,13 @@ entry.
 - `editor/undo`, class `Undo`: busybox vi's undo for one Buffer, with
   chained records and a queue that makes a run of typing one change. A pop
   answers what it undid and prints nothing.
+- `editor/keys`, class `Keys`: busybox's read_key over a host's bytes. A key
+  is a byte, or a negative code for a known escape sequence; a lone Escape is
+  the Escape key, and a cursor report is a key with its numbers kept.
+- `editor/screen`, class `Pane`: busybox vi's refresh in a rectangle of the
+  terminal, or all of it. Rows, with colour cells or not, are written where
+  they differ from the rows last drawn, and every escape is answered as a
+  string for the host to write.
 
 ```x
 (import editor/buffer Buffer)
